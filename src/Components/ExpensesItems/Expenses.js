@@ -12,16 +12,20 @@ SetfilteredDate(selectedYear)
         return(expense.date.getFullYear().toString() === filteredDate)
         
     })
+    let ExpenseContent = <p>No Expenses Found</p>
+    if (Filteredyearitem.length > 0) {
+        ExpenseContent = Filteredyearitem.map(expense =>
+            <ExpenseItem 
+            key={expense.id}
+            title={expense.title}
+             amount={expense.amount} 
+             date={expense.date}/>
+       )
+    }
     return(
         <Card className='expenses'>
             <ExpensesFilter value={filteredDate} OnchangeFilter={ChangingFilterTime}/>
-            {Filteredyearitem.map(expense =>
-                 <ExpenseItem 
-                 key={expense.id}
-                 title={expense.title}
-                  amount={expense.amount} 
-                  date={expense.date}/>
-            )}
+            {ExpenseContent}
        
         </Card>
     )
