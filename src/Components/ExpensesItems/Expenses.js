@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import ExpenseItem from './ExpenseItem';
+import ExpensesList from './ExpensesList';
 import './Expenses.css'
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
@@ -8,25 +8,16 @@ export default function Expenses(props){
     function ChangingFilterTime(selectedYear){
 SetfilteredDate(selectedYear)
     }
-    const Filteredyearitem = props.items.filter(expense=>{
-        return(expense.date.getFullYear().toString() === filteredDate)
+    const Filteredyearitem = props.items.filter(expense=>{console.log(expense.date?.getFullYear().toString()===filteredDate)
+        return expense.date.getFullYear().toString() === filteredDate;
+        
         
     })
-    let ExpenseContent = <p>No Expenses Found</p>
-    if (Filteredyearitem.length > 0) {
-        ExpenseContent = Filteredyearitem.map(expense =>
-            <ExpenseItem 
-            key={expense.id}
-            title={expense.title}
-             amount={expense.amount} 
-             date={expense.date}/>
-       )
-    }
-    return(
+
+    return(<li>
         <Card className='expenses'>
-            <ExpensesFilter value={filteredDate} OnchangeFilter={ChangingFilterTime}/>
-            {ExpenseContent}
-       
-        </Card>
+            <ExpensesFilter selected={filteredDate} OnchangeFilter={ChangingFilterTime}/>
+       <ExpensesList itemsData={Filteredyearitem}/>
+        </Card></li>
     )
 }

@@ -17,7 +17,7 @@ function SubmitHandler(event){
     event.preventDefault();
     const ExpenseData ={
         title:enteredtitle,
-        Amount:enteredamount,
+        Amount:+enteredamount,
         Date:new Date(enteredDate)
     }
     props.onSaveExpenseData(ExpenseData);
@@ -43,7 +43,9 @@ function SubmitHandler(event){
             max='2022-12-31' onChange={dateChangeHandler}/>
     </div></div>
     <div className='new-expense__actions'>
+    <button type='button' onClick={props.OnCancle}>Cancle</button>
         <button type='submit'>Add Expense</button>
+        
     </div>
     
     </form>
