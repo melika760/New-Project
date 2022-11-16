@@ -19,6 +19,7 @@ export default function ExpensesChart(props){
         const expenseMonth = expense.date.getMonth()
         ChangeDataPoint[expenseMonth].value += expense.amount
     }
+  
 
     return <Charts Datapoints={ChangeDataPoint}/>
 }
