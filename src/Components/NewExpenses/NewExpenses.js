@@ -8,8 +8,9 @@ export default function NewExpenses(props){
             ...enteredExpenseData,
             id:Math.random().toString()
         }
-        props.onExpensechange(ExpenseData)
         SetIsEditing(false)
+        props.onExpensechange(ExpenseData)
+       
     }
     function SaveEditing(){
         SetIsEditing(true)

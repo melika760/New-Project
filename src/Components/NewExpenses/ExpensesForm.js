@@ -17,7 +17,7 @@ function SubmitHandler(event){
     event.preventDefault();
     const ExpenseData ={
         title:enteredtitle,
-        Amount:+enteredamount,
+        Amount: +enteredamount,
         Date:new Date(enteredDate)
     }
     props.onSaveExpenseData(ExpenseData);
